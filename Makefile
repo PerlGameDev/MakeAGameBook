@@ -1,13 +1,16 @@
 all: book.pdf book.tex book.epub
 
-book.pdf:
-	pandoc book.markdown -o book.pdf
+build/:
+	mkdir build
 
-book.tex:
-	pandoc book.markdown -o book.tex
+book.pdf: build/
+	pandoc book.markdown -o build/book.pdf
 
-book.epub:
-	pandoc book.markdown -o book.epub
+book.tex: build/
+	pandoc book.markdown -o build/book.tex
+
+book.epub: build/
+	pandoc book.markdown -o build/book.epub
 
 clean:
-	rm book.pdf book.tex book.epub
+	rm build/*
